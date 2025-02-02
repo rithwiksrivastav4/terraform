@@ -1,9 +1,9 @@
 resource "aws_vpc" "base" {
 
-  cidr_block = "10.10.0.0/16"
+  cidr_block = var.vpc_cidr
 
   tags = {
-    Name = "ntire"
+    Name = var.vpc_name
   }
 
 }
@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "base" {
   vpc_id = aws_vpc.base.id
 
   tags = {
-    Name = "ntire-igw"
+    Name = var.igwn
   }
 
   depends_on = [aws_vpc.base]
@@ -37,7 +37,7 @@ resource "aws_route_table" "public" {
   vpc_id = aws_vpc.base.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = var.route
     gateway_id = aws_internet_gateway.base.id
   }
 
@@ -53,13 +53,24 @@ resource "aws_route_table" "public" {
 }
 
 
-resource "aws_subnet" "private" {
-
+resource "aws_subnet" "public" {
   vpc_id            = aws_vpc.base.id
-  availability_zone = "ap-south-1a"
-  cidr_block        = "10.10.0.0/24"
+  availability_zone = var.azs[0]
+  cidr_block        = var.subnet_cidrs[0]
   tags = {
-    Name = "private-sub"
+    Name = var.subnet_names[0]
+  }
+
+  depends_on = [aws_vpc.base]
+
+}
+
+resource "aws_subnet" "private" {
+  vpc_id            = aws_vpc.base.id
+  availability_zone = var.azs[1]
+  cidr_block        = var.subnet_cidrs[1]
+  tags = {
+    Name = var.subnet_names[1]
   }
 
   depends_on = [aws_vpc.base]
@@ -73,22 +84,6 @@ resource "aws_route_table_association" "private" {
   route_table_id = aws_route_table.private.id
 
 }
-
-
-resource "aws_subnet" "public" {
-  vpc_id            = aws_vpc.base.id
-  availability_zone = "ap-south-1b"
-  cidr_block        = "10.10.1.0/24"
-
-  tags = {
-    Name = "public-sub"
-  }
-
-  depends_on = [aws_vpc.base]
-
-}
-
-
 
 resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public.id
