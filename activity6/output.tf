@@ -17,3 +17,7 @@ output "azs" {
   value       = var.azs
   description = "availability zones of subnets"
 }
+output "rtn" {
+  value       = var.rtn
+  description = "route table names"
+}
