@@ -25,7 +25,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.base.id
 
   tags = {
-    Name = "ntire-private"
+    Name = var.rtn[0]
   }
 
   depends_on = [aws_vpc.base]
@@ -42,7 +42,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "ntire-public"
+    Name = var.rtn[1]
   }
 
   depends_on = [

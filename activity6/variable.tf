@@ -43,3 +43,8 @@ variable "igwn" {
   default     = "ntire-igw"
   description = "internet gateway name"
 }
+
+variable "rtn" {
+  type    = list(string)
+  default = ["ntire-private", "ntire-public"]
+}
