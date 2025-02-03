@@ -9,15 +9,15 @@ output "vpc_cidr" {
 }
 
 output "subnet_cidrs" {
-  value       = var.subnet_cidrs
+  value       = var.public_subnets
   description = "this is subnets cidr"
 }
 
 output "azs" {
-  value       = var.azs
+  value       = var.public_subnets
   description = "availability zones of subnets"
 }
 output "rtn" {
-  value       = var.rtn
+  value       = var.network_name
   description = "route table names"
 }
