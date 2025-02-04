@@ -34,6 +34,16 @@ web_security_group = {
   }]
 }
 
+db_security_group = {
+  name = "db-sg"
+  rules = [{
+    cidr_ipv4   = "10.10.0.0/16"
+    from_port   = "3306"
+    to_port     = "3306"
+    ip_protocol = "all"
+  }]
+}
+
 
 
 

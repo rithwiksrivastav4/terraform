@@ -49,3 +49,15 @@ variable "web_security_group" {
   })
 
 }
+
+variable "db_security_group" {
+  type = object({
+    name = optional(string, "db-sg")
+    rules = list(object({
+      cidr_ipv4   = optional(string, "10.10.0.0/16")
+      from_port   = number
+      to_port     = number
+      ip_protocol = optional(string, "all")
+    }))
+  })
+}

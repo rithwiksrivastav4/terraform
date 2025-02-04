@@ -32,23 +32,25 @@ resource "aws_vpc_security_group_egress_rule" "base" {
 resource "aws_security_group" "db" {
   vpc_id      = aws_vpc.base.id
   description = "rules for security group db"
-  name        = "db_sg"
+  name        = var.db_security_group.name
   tags = {
-    Name = "db-sg"
+    Name = var.db_security_group.name
   }
   depends_on = [aws_vpc.base]
 }
 
 resource "aws_vpc_security_group_ingress_rule" "db" {
+  count             = length(var.db_security_group.rules)
   security_group_id = aws_security_group.db.id
-  cidr_ipv4         = "10.10.0.0/16"
-  from_port         = "3306"
-  to_port           = "3306"
-  ip_protocol       = "all"
+  cidr_ipv4         = var.db_security_group.rules[count.index].cidr_ipv4
+  from_port         = var.db_security_group.rules[count.index].from_port
+  to_port           = var.db_security_group.rules[count.index].to_port
+  ip_protocol       = var.db_security_group.rules[count.index].ip_protocol
 }
 
 resource "aws_vpc_security_group_egress_rule" "db" {
+  count             = length(var.db_security_group.rules)
   security_group_id = aws_security_group.db.id
   cidr_ipv4         = local.anywhere
-  ip_protocol       = "-1"
+  ip_protocol       = var.db_security_group.rules[count.index].ip_protocol
 }
