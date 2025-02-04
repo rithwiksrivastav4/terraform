@@ -23,6 +23,18 @@ public_subnets = [
   }
 ]
 
+web_security_group = {
+  name = "web-sg"
+  rules = [{
+    cidr_ipv4   = "0.0.0.0/0"
+    from_port   = "22"
+    to_port     = "22"
+    ip_protocol = "tcp"
+  }]
+}
+
+
+
 
 
 

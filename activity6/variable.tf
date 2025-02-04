@@ -35,3 +35,17 @@ variable "private_subnets" {
   }))
   description = "private subnets"
 }
+
+
+variable "web_security_group" {
+  type = object({
+    name = optional(string, "web-sg")
+    rules = list(object({
+      cidr_ipv4   = optional(string, "0.0.0.0/0")
+      from_port   = optional(number, "22")
+      to_port     = optional(number, "22")
+      ip_protocol = optional(string, "tcp")
+    }))
+  })
+  description = "rules for security group "
+}
