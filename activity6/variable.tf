@@ -47,5 +47,5 @@ variable "web_security_group" {
       ip_protocol = optional(string, "tcp")
     }))
   })
-  description = "rules for security group "
+
 }

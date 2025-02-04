@@ -30,6 +30,7 @@ web_security_group = {
     from_port   = "22"
     to_port     = "22"
     ip_protocol = "tcp"
+
   }]
 }
 
