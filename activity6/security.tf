@@ -1,6 +1,7 @@
 resource "aws_security_group" "base" {
-  vpc_id = aws_vpc.base.id
-  name   = var.web_security_group.name
+  vpc_id      = aws_vpc.base.id
+  name        = var.web_security_group.name
+  description = "rules for security group web"
   tags = {
     Name = var.web_security_group.name
   }
@@ -26,4 +27,28 @@ resource "aws_vpc_security_group_egress_rule" "base" {
   cidr_ipv4         = var.web_security_group.rules[count.index].cidr_ipv4
   ip_protocol       = "-1"
 
+}
+
+resource "aws_security_group" "db" {
+  vpc_id      = aws_vpc.base.id
+  description = "rules for security group db"
+  name        = "db_sg"
+  tags = {
+    Name = "db-sg"
+  }
+  depends_on = [aws_vpc.base]
+}
+
+resource "aws_vpc_security_group_ingress_rule" "db" {
+  security_group_id = aws_security_group.db.id
+  cidr_ipv4         = "10.10.0.0/16"
+  from_port         = "3306"
+  to_port           = "3306"
+  ip_protocol       = "all"
+}
+
+resource "aws_vpc_security_group_egress_rule" "db" {
+  security_group_id = aws_security_group.db.id
+  cidr_ipv4         = local.anywhere
+  ip_protocol       = "-1"
 }
