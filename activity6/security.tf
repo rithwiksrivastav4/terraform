@@ -54,3 +54,8 @@ resource "aws_vpc_security_group_egress_rule" "db" {
   cidr_ipv4         = local.anywhere
   ip_protocol       = var.db_security_group.rules[count.index].ip_protocol
 }
+
+resource "aws_key_pair" "mykeypair" {
+  key_name   = "mykeypair"
+  public_key = file("C:/Users/rithwik/.ssh/id_rsa).pub")
+}
