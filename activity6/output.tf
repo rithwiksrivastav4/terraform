@@ -26,7 +26,8 @@ output "web-url" {
 }
 output "ssh_command" {
   value = format(
-    "ssh -i %s @%s",
+    "ssh -i %s %s@%s",
     var.key_pair_path.private_key_path,
+    var.web_server.username,
   aws_instance.web.public_ip)
 }

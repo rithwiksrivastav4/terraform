@@ -1,7 +1,7 @@
 resource "aws_instance" "web" {
-  ami                         = "ami-00bb6a80f01f03502"
-  instance_type               = "t2.micro"
-  associate_public_ip_address = true
+  ami                         = var.web_server.ami
+  instance_type               = var.web_server.instance_type
+  associate_public_ip_address = var.web_server.associate_public_ip_address
   key_name                    = var.key_pair_path.name
   root_block_device {
     encrypted = true
@@ -10,7 +10,7 @@ resource "aws_instance" "web" {
     http_tokens = "required"
   }
   tags = {
-    Name = "my-instance"
+    Name = var.web_server.name
   }
   subnet_id              = aws_subnet.public[0].id
   vpc_security_group_ids = [aws_security_group.base.id]

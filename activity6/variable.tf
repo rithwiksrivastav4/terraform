@@ -69,3 +69,13 @@ variable "key_pair_path" {
     private_key_path = optional(string, "C:/Users/rithwik/.ssh/id_rsa)")
   })
 }
+
+variable "web_server" {
+  type = object({
+    name                        = string
+    ami                         = optional(string, "ami-00bb6a80f01f03502")
+    instance_type               = optional(string, "t2.micro")
+    associate_public_ip_address = optional(bool, "true")
+    username                    = optional(string, "ubuntu")
+  })
+}

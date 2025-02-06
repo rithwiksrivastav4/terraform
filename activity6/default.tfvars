@@ -48,6 +48,12 @@ key_pair_path = {
   name = "mykeypair"
 }
 
+web_server = {
+  name                        = "my_instance"
+  ami                         = "ami-00bb6a80f01f03502"
+  associate_public_ip_address = "true"
+}
+
 
 
 
