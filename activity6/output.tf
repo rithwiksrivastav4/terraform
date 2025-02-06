@@ -21,3 +21,12 @@ output "rtn" {
   value       = var.network_name
   description = "route table names"
 }
+output "web-url" {
+  value = format("http://%s", aws_instance.web.public_ip)
+}
+output "ssh_command" {
+  value = format(
+    "ssh -i %s @%s",
+    var.key_pair_path.private_key_path,
+  aws_instance.web.public_ip)
+}

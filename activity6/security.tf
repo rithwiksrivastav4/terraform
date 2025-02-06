@@ -56,6 +56,6 @@ resource "aws_vpc_security_group_egress_rule" "db" {
 }
 
 resource "aws_key_pair" "mykeypair" {
-  key_name   = "mykeypair"
-  public_key = file("C:/Users/rithwik/.ssh/id_rsa).pub")
+  key_name   = var.key_pair_path.name
+  public_key = file(var.key_pair_path.public_key_path)
 }

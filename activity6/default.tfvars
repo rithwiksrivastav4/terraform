@@ -44,6 +44,10 @@ db_security_group = {
   }]
 }
 
+key_pair_path = {
+  name = "mykeypair"
+}
+
 
 
 
