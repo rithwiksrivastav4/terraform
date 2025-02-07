@@ -1,5 +1,5 @@
 resource "aws_instance" "web" {
-  ami                         = var.web_server.ami
+  ami                         = data.aws_ami.webimage.id
   instance_type               = var.web_server.instance_type
   associate_public_ip_address = var.web_server.associate_public_ip_address
   key_name                    = var.key_pair_path.name
@@ -17,6 +17,7 @@ resource "aws_instance" "web" {
   depends_on = [
     aws_key_pair.mykeypair,
     aws_subnet.public,
-    aws_security_group.base
+    aws_security_group.base,
+    data.aws_ami.webimage
   ]
 }

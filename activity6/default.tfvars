@@ -49,8 +49,12 @@ key_pair_path = {
 }
 
 web_server = {
-  name                        = "my_instance"
-  ami                         = "ami-00bb6a80f01f03502"
+  name = "my_instance"
+  ami_filter = {
+    name  = "ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20250115"
+    owner = "099720109477"
+  }
+  #ami_filter = {}
   associate_public_ip_address = "true"
 }
 

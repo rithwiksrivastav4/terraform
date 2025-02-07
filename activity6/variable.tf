@@ -65,15 +65,18 @@ variable "db_security_group" {
 variable "key_pair_path" {
   type = object({
     name             = optional(string, "mykeypair")
-    public_key_path  = optional(string, "~/.ssh/id_rsa).pub")
-    private_key_path = optional(string, "~/.ssh/id_rsa)")
+    public_key_path  = optional(string, "~/.ssh/id_rsaa.pub")
+    private_key_path = optional(string, "~/.ssh/id_rsaa")
   })
 }
 
 variable "web_server" {
   type = object({
-    name                        = string
-    ami                         = optional(string, "ami-00bb6a80f01f03502")
+    name = string
+    ami_filter = object({
+      name  = optional(string, "ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20250115")
+      owner = optional(string, "099720109477")
+    })
     instance_type               = optional(string, "t2.micro")
     associate_public_ip_address = optional(bool, "true")
     username                    = optional(string, "ubuntu")
