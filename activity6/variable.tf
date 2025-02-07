@@ -65,8 +65,8 @@ variable "db_security_group" {
 variable "key_pair_path" {
   type = object({
     name             = optional(string, "mykeypair")
-    public_key_path  = optional(string, "C:/Users/rithwik/.ssh/id_rsa).pub")
-    private_key_path = optional(string, "C:/Users/rithwik/.ssh/id_rsa)")
+    public_key_path  = optional(string, "~/.ssh/id_rsa).pub")
+    private_key_path = optional(string, "~/.ssh/id_rsa)")
   })
 }
 
