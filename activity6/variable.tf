@@ -42,8 +42,8 @@ variable "web_security_group" {
     name = optional(string, "web-sg")
     rules = list(object({
       cidr_ipv4   = optional(string, "0.0.0.0/0")
-      from_port   = optional(number, "22")
-      to_port     = optional(number, "22")
+      from_port   = number
+      to_port     = number
       ip_protocol = optional(string, "tcp")
     }))
   })
@@ -54,10 +54,10 @@ variable "db_security_group" {
   type = object({
     name = optional(string, "db-sg")
     rules = list(object({
-      cidr_ipv4   = optional(string, "10.10.0.0/16")
+      cidr_ipv4   = optional(string, "0.0.0.0/0")
       from_port   = number
       to_port     = number
-      ip_protocol = optional(string, "all")
+      ip_protocol = optional(string, "tcp")
     }))
   })
 }

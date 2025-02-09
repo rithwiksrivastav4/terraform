@@ -26,21 +26,22 @@ public_subnets = [
 web_security_group = {
   name = "web-sg"
   rules = [{
-    cidr_ipv4   = "0.0.0.0/0"
-    from_port   = "22"
-    to_port     = "22"
-    ip_protocol = "tcp"
-
+    #cidr_ipv4   = "0.0.0.0/0"
+    from_port = 22
+    to_port   = 22
+    }, {
+    from_port = 80
+    to_port   = 80
   }]
 }
 
 db_security_group = {
   name = "db-sg"
   rules = [{
-    cidr_ipv4   = "10.10.0.0/16"
-    from_port   = "3306"
-    to_port     = "3306"
-    ip_protocol = "all"
+    #cidr_ipv4   = "10.10.0.0/16"
+    from_port = 3306
+    to_port   = 3306
+
   }]
 }
 

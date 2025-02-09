@@ -22,9 +22,8 @@ resource "aws_vpc_security_group_ingress_rule" "base" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "base" {
-  count             = length(var.web_security_group.rules)
   security_group_id = aws_security_group.base.id
-  cidr_ipv4         = var.web_security_group.rules[count.index].cidr_ipv4
+  cidr_ipv4         = local.anywhere
   ip_protocol       = "-1"
 
 }
@@ -49,10 +48,9 @@ resource "aws_vpc_security_group_ingress_rule" "db" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "db" {
-  count             = length(var.db_security_group.rules)
   security_group_id = aws_security_group.db.id
   cidr_ipv4         = local.anywhere
-  ip_protocol       = var.db_security_group.rules[count.index].ip_protocol
+  ip_protocol       = "-1"
 }
 
 resource "aws_key_pair" "mykeypair" {
