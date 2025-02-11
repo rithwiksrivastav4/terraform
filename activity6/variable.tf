@@ -82,3 +82,7 @@ variable "web_server" {
     username                    = optional(string, "ubuntu")
   })
 }
+variable "build_id" {
+  type    = string
+  default = "1"
+}
