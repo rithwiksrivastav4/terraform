@@ -3,7 +3,7 @@ resource "aws_instance" "web" {
   instance_type               = var.web_server.instance_type
   associate_public_ip_address = var.web_server.associate_public_ip_address
   key_name                    = var.key_pair_path.name
-    root_block_device {
+  root_block_device {
     encrypted = true
   }
   metadata_options {
