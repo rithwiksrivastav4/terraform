@@ -11,6 +11,7 @@ resource "aws_instance" "web" {
   }
   tags = {
     Name = var.web_server.name
+    Name = var.tags
   }
   subnet_id              = aws_subnet.public[0].id
   vpc_security_group_ids = [aws_security_group.base.id]

@@ -86,3 +86,8 @@ variable "build_id" {
   type    = string
   default = "1"
 }
+
+variable "tags" {
+  type = string
+  default = "v1.0.0"
+}
