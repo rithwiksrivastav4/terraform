@@ -1,7 +1,7 @@
 module "myMODULES" {
 
 
-  source       = "github.com/rithwiksrivastav4/terraform/aws//activity5"
+  source       = "github.com/rithwiksrivastav4/terraform/aws//activity5?ref=v1.0.0"
   region       = "ap-south-1"
   vpc_cidr     = "10.10.0.0/16"
   network_name = "ntire"
