@@ -28,7 +28,7 @@
 #         value = "A example resource that does nothing!"
 #       }
 #     }
-#
+#     
 #
 # 2. Generate a Terraform Cloud user API token and store it as a GitHub secret (e.g. TF_API_TOKEN) on this repository.
 #   Documentation:
