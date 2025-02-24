@@ -62,7 +62,7 @@ jobs:
 
     defaults:
       run: 
-        working-directory: module_usage
+        working-directory: ./aws/module_usage
        
     steps:
     # Checkout the repository to the GitHub Actions runner
