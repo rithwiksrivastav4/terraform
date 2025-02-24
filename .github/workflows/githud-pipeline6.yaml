@@ -62,7 +62,7 @@ jobs:
 
     defaults:
       run: 
-        working-directory: activity6
+        working-directory: ./aws/activity6
        
     steps:
     # Checkout the repository to the GitHub Actions runner
