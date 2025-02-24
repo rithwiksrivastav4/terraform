@@ -62,7 +62,7 @@ jobs:
 
     defaults:
       run: 
-        working-directory: activity1
+        working-directory: aws/activity1
        
     steps:
     # Checkout the repository to the GitHub Actions runner
