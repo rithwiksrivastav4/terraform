@@ -57,17 +57,24 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     env:
-       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      WORKING_DIRECTORY: aws/activity1
 
     defaults:
-      run: 
-        working-directory: aws/activity1
-       
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v4
+
+    # Display working directory details
+    - name: Display Working Directory
+      run: |
+        echo "Current Working Directory: $(pwd)"
+        ls -l
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -88,7 +95,6 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -out=tfplan -input=false
 
-      # On push to "main", build or change infrastructure according to Terraform configuration files
-      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+    # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       run: terraform apply tfplan
