@@ -17,7 +17,7 @@ resource "aws_subnet" "one" {
     Project = "learning"
   }
 
-  depends_on = [ aws_vpc.base ]
+  depends_on = [aws_vpc.base]
 }
 
 resource "aws_subnet" "two" {
@@ -29,7 +29,7 @@ resource "aws_subnet" "two" {
     Env     = "dev"
     Project = "learning"
   }
-  depends_on = [ aws_vpc.base ]
+  depends_on = [aws_vpc.base]
 }
 
 resource "aws_subnet" "three" {
@@ -41,7 +41,7 @@ resource "aws_subnet" "three" {
     Env     = "dev"
     Project = "learning"
   }
-  depends_on = [ aws_vpc.base ]
+  depends_on = [aws_vpc.base]
 }
 
 resource "aws_subnet" "four" {
@@ -53,5 +53,5 @@ resource "aws_subnet" "four" {
     Env     = "dev"
     Project = "learning"
   }
-  depends_on = [ aws_vpc.base ]
+  depends_on = [aws_vpc.base]
 }
