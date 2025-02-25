@@ -1,3 +1,4 @@
+
 # This workflow installs the latest version of Terraform CLI and configures the Terraform CLI configuration file
 # with an API token for Terraform Cloud (app.terraform.io). On pull request events, this workflow will run
 # `terraform init`, `terraform fmt`, and `terraform plan` (speculative plan via Terraform Cloud). On push events
@@ -47,8 +48,7 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'aws/activity1'  
+  pull_request:
 
 permissions:
   contents: read
@@ -81,16 +81,15 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
+    
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: terraform fmt
+    
+    - name: terraform validate
+      run: terraform validate  
 
-    - name: Terraform Plan
-      run: terraform plan -out=tfplan -input=false
-
-    # On push to "main", build or change infrastructure according to Terraform configuration files
-
+      # On push to "main", build or change infrastructure according to Terraform configuration files
+      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
-      if: github.event_name == 'push' && working-directory == './aws/activity1'
-      run: terraform apply tfplan -auto-approve  
-
+      run: terraform apply -auto-approve

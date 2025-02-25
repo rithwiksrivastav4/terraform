@@ -95,5 +95,5 @@ jobs:
 
     # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      if: github.event_name == 'push' && working-directory == './aws/activity2'
+      if: github.event_name == 'push' 
       run: terraform apply tfplan -auto-approve
