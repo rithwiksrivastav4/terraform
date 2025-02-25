@@ -62,7 +62,7 @@ jobs:
 
     defaults:
       run: 
-        working-directory: './aws/activity2'
+        working-directory: './aws/module_usage'
        
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -84,7 +84,7 @@ jobs:
     - name: Terraform Format
       run: terraform fmt
 
-      # checks that all terraform configuration files are validate or not
+     # checks that all terraform configuration files are validate or not
     - name: Terraform validate
       run: terraform validate
 
@@ -95,4 +95,4 @@ jobs:
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
-      run: terraform apply -auto-approve tfplan
+      run: terraform apply  -auto-approve tfplan
