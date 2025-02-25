@@ -64,7 +64,7 @@ jobs:
 
     defaults:
       run: 
-        working-directory: './aws/Ntrie_arc'
+        working-directory: './aws/Ntire_arc'
        
     steps:
     # Checkout the repository to the GitHub Actions runner
