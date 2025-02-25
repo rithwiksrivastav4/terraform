@@ -88,6 +88,6 @@ variable "build_id" {
 }
 
 variable "tags" {
-  type = string
+  type    = string
   default = "v1.0.0"
 }
