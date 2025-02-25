@@ -47,9 +47,8 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main" ]
-  paths:
+    paths:
       - 'aws/activity1'  
-  pull_request:
 
 permissions:
   contents: read
