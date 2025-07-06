@@ -16,20 +16,22 @@ This project leverages [Terraform](https://www.terraform.io/) to automate the de
 
 ## 📁 Directory Structure
 
+```plaintext
 terraform/
-├── main.tf # Main configuration file
-├── variables.tf # Input variables
-├── outputs.tf # Output values
-├── terraform.tfvars # Variable assignments
-├── providers.tf # Provider configurations (e.g., AWS, Azure, etc.)
-├── modules/ # Custom reusable modules
-│ ├── vpc/
-│ ├── ec2/
-│ └── s3/
-├── environments/ # Environment-specific configurations
-│ ├── dev/
-│ ├── staging/
-│ └── prod/
+├── main.tf              # Main configuration file
+├── variables.tf         # Input variables
+├── outputs.tf           # Output values
+├── terraform.tfvars     # Variable assignments
+├── providers.tf         # Provider configurations (e.g., AWS, Azure, etc.)
+├── modules/             # Custom reusable modules
+│   ├── vpc/
+│   ├── ec2/
+│   └── s3/
+├── environments/        # Environment-specific configurations
+│   ├── dev/
+│   ├── staging/
+│   └── prod/
+```
 
 
 ## ✅ Prerequisites
