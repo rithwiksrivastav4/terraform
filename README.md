@@ -76,7 +76,7 @@ terraform apply
 terraform destroy
 ```
 
-🔧 Configuration
+### 🔧 Configuration
 Customize input values using:
 
 terraform.tfvars file
@@ -85,12 +85,15 @@ Inline command flags (e.g., -var="key=value")
 
 Environment variables (e.g., TF_VAR_key=value)
 
-Example: terraform.tfvars
-hcl
+### Example: terraform.tfvars
+
+```hcl
 region        = "us-east-1"
 instance_type = "t2.micro"
 environment   = "dev"
-📦 Modules Included
+```
+
+### 📦 Modules Included
 The repo includes reusable modules:
 
 vpc – Create a Virtual Private Cloud
@@ -99,22 +102,21 @@ ec2 – Launch EC2 compute instances
 
 s3 – Provision S3 storage buckets
 
-🧪 Environment Support
-Create separate configurations for each environment under environments/:
+### 🧪 Environment Support
+* Create separate configurations for each environment under environments/:
 
-r
-Copy
-Edit
+```plaintext
 environments/
 ├── dev/
 ├── staging/
 └── prod/
+```
 Each environment can have its own state file, variables, and module configurations.
 
-📜 License
+### 📜 License
 This project is licensed under the MIT License.
 
-🙋‍♂️ Support
+### 🙋‍♂️ Support
 Feel free to open an issue for bugs or feature requests.
 
-Made with ❤️ using Terraform
+### Made with ❤️ using Terraform
